@@ -74,7 +74,8 @@
     {
         "ParameterKey": "Table17Name",
         "ParameterValue": "daily_olv"
-    },    {
+    },    
+    {
         "ParameterKey": "Table18Name",
         "ParameterValue": "daily_social"
     }
