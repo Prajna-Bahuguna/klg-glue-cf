@@ -1,0 +1,407 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  This template sets up AWS Glue Crawlers.
+Parameters:
+  Crawler1Name:
+    Type: String
+    Description: "Crawler 1 Name"
+  Crawler2Name:
+    Type: String
+    Description: "Crawler 2 Name"
+  Crawler3Name:
+    Type: String
+    Description: "Crawler 3 Name"
+  Crawler4Name:
+    Type: String
+    Description: "Crawler 4 Name"
+  Crawler5Name:
+    Type: String
+    Description: "Crawler 5 Name"
+  Crawler6Name:
+    Type: String
+    Description: "Crawler 6 Name"
+  Crawler7Name:
+    Type: String
+    Description: "Crawler 7 Name"
+  Crawler8Name:
+    Type: String
+    Description: "Crawler 8 Name"
+  Crawler9Name:
+    Type: String
+    Description: "Crawler 9 Name"
+  Crawler10Name:
+    Type: String
+    Description: "Crawler 10 Name"
+  Crawler11Name:
+    Type: String
+    Description: "Crawler 11 Name"
+  Crawler12Name:
+    Type: String
+    Description: "Crawler 12 Name"
+  Crawler13Name:
+    Type: String
+    Description: "Crawler 13 Name"
+  Crawler14Name:
+    Type: String
+    Description: "Crawler 14 Name" 
+  Crawler15Name:
+    Type: String
+    Description: "Crawler 15 Name"
+  Crawler16Name:
+    Type: String
+    Description: "Crawler 16 Name"
+  Crawler17Name:
+    Type: String
+    Description: "Crawler 17 Name"
+  Crawler18Name:
+    Type: String
+    Description: "Crawler 18 Name"
+  DatabaseName:
+    Type: String
+    Description: "Catalog database name"
+  TablePrefix1:
+    Type: String
+    Description: "Table Prefix for crawlers(1-15)"  
+  TablePrefix2:
+    Type: String
+    Description: "Table Prefix for crawlers(16-18)"  
+  CrawlerTarget:
+    Type: String
+    Description: "S3 Bucket name for crawlers" 
+  CrawlerUpdateBehaviour:
+    Type: String
+    Description: "Schema Change Policy for update behaviour of crawler"
+  CrawlerDeleteBehaviour:
+    Type: String
+    Description: "Schema Change Policy for delete behaviour of crawler"
+  AccountID:
+    Type: String
+    Description: "Account ID of AWS" 
+  GlueRoleName:
+    Type: String
+    Description: "Glue role name"      
+Resources:  
+  GlueCrawler1:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler1Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix1}" 
+      Schedule:
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+          - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/audio/"    
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}"
+  GlueCrawler2:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler2Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix1}" 
+      Schedule:
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+          - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/digital_coupons"   
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}"  
+  GlueCrawler3:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler3Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix1}" 
+      Schedule:
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+          - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/display/"    
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}" 
+  GlueCrawler4:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler4Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix1}" 
+      Schedule:
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+          - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/email/"    
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}"
+  GlueCrawler5:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler5Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix1}" 
+      Schedule:
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+          - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/fsi/"    
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}"
+  GlueCrawler6:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler6Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix1}" 
+      Schedule:
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+          - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/fsi_restatement/"    
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}"
+  GlueCrawler7:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler7Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix1}"
+      Schedule: 
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+          - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/olv/"    
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}"
+  GlueCrawler8:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler8Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix1}" 
+      Schedule:
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+        - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/ooh/"   
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}"
+  GlueCrawler9:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler9Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix1}" 
+      Schedule:
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+        - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/pr/"    
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}"
+  GlueCrawler10:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler10Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix1}" 
+      Schedule:
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+        - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/search/"    
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}"
+  GlueCrawler11:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler11Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix1}" 
+      Schedule:
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+        - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/shipment/"    
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}"
+  GlueCrawler12:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler12Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix1}" 
+      Schedule:
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+        - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/shopper_instore/"    
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}"
+  GlueCrawler13:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler13Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix1}" 
+      Schedule:
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+        - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/social/"    
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}"
+  GlueCrawler14:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler14Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix1}" 
+      Schedule:
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+        - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/tentpole/"    
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}" 
+  GlueCrawler15:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler15Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix1}"
+      Schedule: 
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+        - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/trade/"    
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}"  
+  GlueCrawler16:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler16Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix2}" 
+      Schedule:
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+        - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/dcm/display/"    
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}"      
+  GlueCrawler17:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler17Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix2}" 
+      Schedule:
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+        - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/dcm/olv/"    
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}"      
+  GlueCrawler18:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Sub "${Crawler18Name}"
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      DatabaseName: !Sub "${DatabaseName}"
+      TablePrefix: !Sub "${TablePrefix2}" 
+      Schedule:
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      RecrawlPolicy: 
+        RecrawlBehavior: "CRAWL_NEW_FOLDERS_ONLY"
+      Targets:
+        S3Targets:
+        - Path: !Sub "s3://${CrawlerTarget}/proc/data/kna_ext_mktg_exec/proc/dcm/social/"    
+      SchemaChangePolicy:
+        UpdateBehavior: !Sub "${CrawlerUpdateBehaviour}"
+        DeleteBehavior: !Sub "${CrawlerDeleteBehaviour}"
+      "Configuration": "{ \"Version\": 1.0, \"CrawlerOutput\": {\"Partitions\": { \"AddOrUpdateBehavior\": \"InheritFromTable\" }}}"      

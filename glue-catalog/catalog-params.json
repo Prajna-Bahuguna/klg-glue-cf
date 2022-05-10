@@ -1,0 +1,82 @@
+[
+    {
+        "ParameterKey": "DatabaseName",
+        "ParameterValue": "kna_ext_mktg_exec"
+    },
+    {
+        "ParameterKey": "BucketName",
+        "ParameterValue": "sgm-nga-dev-kna-proc-intrnl"
+    },
+    {
+        "ParameterKey": "Table1Name",
+        "ParameterValue": "weekly_display"
+    },
+    {
+        "ParameterKey": "Table2Name",
+        "ParameterValue": "weekly_search"
+    },
+    {
+        "ParameterKey": "Table3Name",
+        "ParameterValue": "weekly_olv"
+    },
+    {
+        "ParameterKey": "Table4Name",
+        "ParameterValue": "weekly_social"
+    },
+    {
+        "ParameterKey": "Table5Name",
+        "ParameterValue": "weekly_coupons"
+    },
+    {
+        "ParameterKey": "Table6Name",
+        "ParameterValue": "weekly_ooh"
+    },
+    {
+        "ParameterKey": "Table7Name",
+        "ParameterValue": "weekly_tentpole"
+    },
+    {
+        "ParameterKey": "Table8Name",
+        "ParameterValue": "weekly_audio"
+    },
+    {
+        "ParameterKey": "Table9Name",
+        "ParameterValue": "weekly_pr"
+    },
+    {
+        "ParameterKey": "Table10Name",
+        "ParameterValue": "weekly_shipment"
+    },
+    {
+        "ParameterKey": "Table11Name",
+        "ParameterValue": "weekly_email"
+    },
+    {
+        "ParameterKey": "Table12Name",
+        "ParameterValue": "weekly_fsi_restatement"
+    },
+    {
+        "ParameterKey": "Table13Name",
+        "ParameterValue": "weekly_trade"
+    },
+    {
+        "ParameterKey": "Table14Name",
+        "ParameterValue": "weekly_fsi"
+    },
+    {
+        "ParameterKey": "Table15Name",
+        "ParameterValue": "weekly_shopper_instore"
+    },
+    {
+        "ParameterKey": "Table16Name",
+        "ParameterValue": "daily_display"
+    },
+    {
+        "ParameterKey": "Table17Name",
+        "ParameterValue": "daily_olv"
+    },    {
+        "ParameterKey": "Table18Name",
+        "ParameterValue": "daily_social"
+    }
+
+]

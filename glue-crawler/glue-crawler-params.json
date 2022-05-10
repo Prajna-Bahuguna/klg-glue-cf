@@ -1,0 +1,106 @@
+[
+  {
+    "ParameterKey": "Crawler1Name",
+    "ParameterValue": "kmh_audio"
+  },
+  {
+    "ParameterKey": "Crawler2Name",
+    "ParameterValue": "kmh_coupons"
+  },
+  {
+    "ParameterKey": "Crawler3Name",
+    "ParameterValue": "kmh_display"
+  },
+  {
+    "ParameterKey": "Crawler4Name",
+    "ParameterValue": "kmh_email"
+  },
+  {
+    "ParameterKey": "Crawler5Name",
+    "ParameterValue": "kmh_fsi"
+  },
+  {
+    "ParameterKey": "Crawler6Name",
+    "ParameterValue": "kmh_fsi_restatement"
+  },
+  {
+    "ParameterKey": "Crawler7Name",
+    "ParameterValue": "kmh_video"
+  },
+  {
+    "ParameterKey": "Crawler8Name",
+    "ParameterValue": "kmh_ooh"
+  },
+  {
+    "ParameterKey": "Crawler9Name",
+    "ParameterValue": "kmh_pr"
+  },
+  {
+    "ParameterKey": "Crawler10Name",
+    "ParameterValue": "kmh_search"
+  },
+  {
+    "ParameterKey": "Crawler11Name",
+    "ParameterValue": "kmh_shipment"
+  },
+  {
+    "ParameterKey": "Crawler12Name",
+    "ParameterValue": "kmh_shopper_instore"
+  },
+  {
+    "ParameterKey": "Crawler13Name",
+    "ParameterValue": "kmh_social"
+  },
+  {
+    "ParameterKey": "Crawler14Name",
+    "ParameterValue": "kmh_tentpole"
+  },
+  {
+    "ParameterKey": "Crawler15Name",
+    "ParameterValue": "kmh_trade"
+  },
+  {
+    "ParameterKey": "Crawler16Name",
+    "ParameterValue": "kmh_dcm_display"
+  },
+  {
+    "ParameterKey": "Crawler17Name",
+    "ParameterValue": "kmh_dcm_olv"
+  },
+  {
+    "ParameterKey": "Crawler18Name",
+    "ParameterValue": "kmh_dcm_social"
+  },
+  {
+    "ParameterKey": "DatabaseName",
+    "ParameterValue": "kna_ext_mktg_exec"
+  },
+  {
+    "ParameterKey": "GlueRoleName",
+    "ParameterValue": "AWSGlueServiceRole-S3toRedshift"
+  },
+  {
+    "ParameterKey": "AccountID",
+    "ParameterValue": "235769897515"
+  },
+  {
+    "ParameterKey": "TablePrefix1",
+    "ParameterValue": "weekly_"
+  },
+  {
+    "ParameterKey": "TablePrefix2",
+    "ParameterValue": "daily_"
+  },
+  {
+    "ParameterKey": "CrawlerTarget",
+    "ParameterValue": "sgm-nga-dev-kna-proc-intrnl"
+  },
+  {
+    "ParameterKey": "CrawlerUpdateBehaviour",
+    "ParameterValue": "LOG"
+  },
+  {
+    "ParameterKey": "CrawlerDeleteBehaviour",
+    "ParameterValue": "LOG"
+  }
+]

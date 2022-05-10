@@ -1,0 +1,66 @@
+[
+  {
+    "ParameterKey": "CommandName",
+    "ParameterValue": "pythonshell"
+  },
+  {
+    "ParameterKey": "PythonVersion",
+    "ParameterValue": "3"
+  },
+  {
+    "ParameterKey": "ConcurrentRuns",
+    "ParameterValue": "10"
+  },
+  {
+    "ParameterKey": "GlueVersion",
+    "ParameterValue": "1.0"
+  },
+  {
+    "ParameterKey": "MaxCapacity",
+    "ParameterValue": "1.0"
+  },
+  {
+    "ParameterKey": "MaxRetries",
+    "ParameterValue": "0"
+  },
+  {
+    "ParameterKey": "Timeout",
+    "ParameterValue": "2880"
+  },
+  {
+    "ParameterKey": "AccountID",
+    "ParameterValue": "235769897515"
+  },
+  {
+    "ParameterKey": "GlueRoleName",
+    "ParameterValue": "AWSGlueServiceRole-S3toRedshift"
+  },
+  {
+    "ParameterKey": "EnvTagName",
+    "ParameterValue": "TEST"
+  },
+  {
+    "ParameterKey": "Env",
+    "ParameterValue": "dev"
+  },
+  {
+    "ParameterKey": "Org",
+    "ParameterValue": "sgm"
+  },
+  {
+    "ParameterKey": "JobName1",
+    "ParameterValue": "wf_raw2clns_nga_kna_ext_intrnl_mktg_exec"
+  },
+  {
+    "ParameterKey": "JobName2",
+    "ParameterValue": "wf_clns2proc_nga_kna_ext_intrnl_mktg_exec"
+  },
+  {
+    "ParameterKey": "JobName3",
+    "ParameterValue": "wf_proc2trnsfd_nga_kna_ext_intrnl_mktg_exec"
+  },
+  {
+    "ParameterKey": "GlueDependenciesAndScriptsBucketName",
+    "ParameterValue": "sgm-nga-dev-kna-src-cd"
+  }
+]

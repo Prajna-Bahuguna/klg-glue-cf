@@ -1,0 +1,143 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  This template sets up AWS Glue Jobs.
+Parameters:
+  CommandName:
+    Type: String
+    Description: "Command Name of glue job"
+  PythonVersion:
+    Type: Number
+    Description: "Python version of glue job"
+  ConcurrentRuns:
+    Type: String
+    Description: "The maximum number of concurrent runs allowed for a job. The default is 1."
+  GlueVersion:
+    Type: String
+    Description: "The version of glue to use"
+  MaxCapacity:
+    Type: Number
+    Description: "The maximum number of AWS Glue data processing units (DPUs) that can be allocated when this job runs"
+  MaxRetries:
+    Type: String
+    Description: "The maximum number of times to retry this job if it fails."
+  Timeout:
+    Type: Number
+    Description: "The job timeout in minutes."
+  AccountID:
+    Type: String
+    Description: "Account ID of AWS" 
+  GlueRoleName:
+    Type: String
+    Description: "Glue role name" 
+  EnvTagName:
+    Type: String
+    Description: "Environment tag name should be passed to glue job. It should always be in upper case letters"  
+  Env:
+    Type: String
+    Description: "Environment name should be passed as job parameter to glue job. It should always be in lower case letters"    
+  Org:
+    Type: String
+    Description: "Organization name should be passed as job parameter to glue job. It should always be in lower case letters"    
+  JobName1:
+    Type: String
+    Description: "Name of first glue job (raw2clns)"
+  JobName2:
+    Type: String
+    Description: "Name of first glue job (ClnsToProc)"
+  JobName3:
+    Type: String
+    Description: "Name of first glue job (ProcToTrnsfd)"
+  GlueDependenciesAndScriptsBucketName:
+    Type: String
+    Description: "The Amazon S3 bucket name where glue dependecies and scripts exists."
+         
+Resources : 
+  AWSGlueJob1:
+    Type: AWS::Glue::Job
+    Properties:
+      Command: {
+        "Name": !Sub "${CommandName}",
+        "PythonVersion": !Sub "${PythonVersion}",
+        "ScriptLocation": !Sub "s3://${GlueDependenciesAndScriptsBucketName}/src_cd/kna_ext_mktg_exec/glue_scripts/standardize.py"
+      }
+      DefaultArguments: {
+        "--TempDir": !Sub "s3://${GlueDependenciesAndScriptsBucketName}/src_cd/kna_ext_mktg_exec/",
+        "--enable-glue-datacatalog": "",
+        "--extra-py-files": !Sub "s3://${GlueDependenciesAndScriptsBucketName}/src_cd/kna_ext_mktg_exec/glue_dependencies/xlrd-1.2.0-py2.py3-none-any.whl,s3://${GlueDependenciesAndScriptsBucketName}/src_cd/kna_ext_mktg_exec/glue_dependencies/s3fs-0.4.2-py3-none-any.whl,s3://${GlueDependenciesAndScriptsBucketName}/src_cd/kna_ext_mktg_exec/glue_dependencies/standardize_helper_module-1.0-py3-none-any.whl,s3://${GlueDependenciesAndScriptsBucketName}/src_cd/kna_ext_mktg_exec/glue_dependencies/awswrangler-2.12.0-py3-none-any.whl",
+        "--class": "GlueApp",
+        "--env": !Sub "${Env}",
+        "--org": !Sub "${Org}",
+        "--stage": "clns",
+        "-- fileName": "",
+        "--dateRange": ""
+      }  
+      ExecutionProperty:
+        MaxConcurrentRuns: !Sub "${ConcurrentRuns}"
+      Name: !Sub "${Env}_${JobName1}" 
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      GlueVersion: !Sub "${GlueVersion}" 
+      MaxCapacity: !Sub "${MaxCapacity}" 
+      MaxRetries: !Sub "${MaxRetries}" 
+      Timeout: !Sub "${Timeout}" 
+      Tags: {
+        "ENV": !Sub "${EnvTagName}" 
+      }
+  AWSGlueJob2:
+    Type: AWS::Glue::Job
+    Properties:
+      Command: {
+        "Name": !Sub "${CommandName}",
+        "PythonVersion": !Sub "${PythonVersion}",
+        "ScriptLocation": !Sub "s3://${GlueDependenciesAndScriptsBucketName}/src_cd/kna_ext_mktg_exec/glue_scripts/transform.py"  
+      }
+      DefaultArguments: {
+        "--TempDir": !Sub "s3://${GlueDependenciesAndScriptsBucketName}/src_cd/kna_ext_mktg_exec/",
+        "--enable-glue-datacatalog": "",
+        "--extra-py-files": !Sub "s3://${GlueDependenciesAndScriptsBucketName}/src_cd/kna_ext_mktg_exec/glue_dependencies/xlrd-1.2.0-py2.py3-none-any.whl,s3://${GlueDependenciesAndScriptsBucketName}/src_cd/kna_ext_mktg_exec/glue_dependencies/s3fs-0.4.2-py3-none-any.whl,s3://${GlueDependenciesAndScriptsBucketName}/src_cd/kna_ext_mktg_exec/glue_dependencies/transform_helper_module-1.0-py3-none-any.whl,s3://${GlueDependenciesAndScriptsBucketName}/src_cd/kna_ext_mktg_exec/glue_dependencies/awswrangler-2.12.0-py3-none-any.whl",
+        "--class": "GlueApp",
+        "--env": !Sub "${Env}",
+        "--org": !Sub "${Org}",
+        "--stage": "proc",
+        "-- fileName": "",
+        "--dateRange": ""
+      }  
+      ExecutionProperty:
+        MaxConcurrentRuns: !Sub "${ConcurrentRuns}"
+      Name: !Sub "${Env}_${JobName2}" 
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      GlueVersion: !Sub "${GlueVersion}" 
+      MaxCapacity: !Sub "${MaxCapacity}" 
+      MaxRetries: !Sub "${MaxRetries}" 
+      Timeout: !Sub "${Timeout}" 
+      Tags: {
+        "ENV": !Sub "${EnvTagName}" 
+      }
+  AWSGlueJob3:
+    Type: AWS::Glue::Job
+    Properties:
+      Command: {
+        "Name": !Sub "${CommandName}",
+        "PythonVersion": !Sub "${PythonVersion}",
+        "ScriptLocation": !Sub "s3://${GlueDependenciesAndScriptsBucketName}/src_cd/kna_ext_mktg_exec/glue_scripts/upload.py",  
+      }
+      DefaultArguments: {
+        "--TempDir": !Sub "s3://${GlueDependenciesAndScriptsBucketName}/src_cd/kna_ext_mktg_exec/",
+        "--enable-glue-datacatalog": "",
+        "--extra-py-files": !Sub "s3://${GlueDependenciesAndScriptsBucketName}/src_cd/kna_ext_mktg_exec/glue_dependencies/upload_helper_module-1.0-py3-none-any.whl,s3://${GlueDependenciesAndScriptsBucketName}/src_cd/kna_ext_mktg_exec/glue_dependencies/awswrangler-2.12.0-py3-none-any.whl",
+        "--class": "GlueApp",
+        "--env": !Sub "${Env}",
+        "--org": !Sub "${Org}",
+        "-- fileName": "",
+        "--dateRange": ""
+      }  
+      ExecutionProperty:
+        MaxConcurrentRuns: !Sub "${ConcurrentRuns}"
+      Name: !Sub "${Env}_${JobName3}" 
+      Role: !Sub "arn:aws:iam::${AccountID}:role/service-role/${GlueRoleName}"
+      GlueVersion: !Sub "${GlueVersion}" 
+      MaxCapacity: !Sub "${MaxCapacity}" 
+      MaxRetries: !Sub "${MaxRetries}" 
+      Timeout: !Sub "${Timeout}" 
+      Tags: {
+        "ENV": !Sub "${EnvTagName}" 
+      }

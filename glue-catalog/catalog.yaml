@@ -1,0 +1,1933 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  This template sets up AWS Glue catalog: Database, Tables.
+Parameters:
+  DatabaseName:
+    Type: String
+    Description: "Catalog database name" 
+  BucketName:
+    Type: String
+    Description: "Name of the S3 bucket"  
+  Table1Name:
+    Type: String
+    Description: "Glue Table 1 Name"
+  Table2Name:
+    Type: String
+    Description: "Glue Table 2 Name"
+  Table3Name:
+    Type: String
+    Description: "Glue Table 3 Name"
+  Table4Name:
+    Type: String
+    Description: "Glue Table 4 Name"
+  Table5Name:
+    Type: String
+    Description: "Glue Table 5 Name"
+  Table6Name:
+    Type: String
+    Description: "Glue Table 6 Name"
+  Table7Name:
+    Type: String
+    Description: "Glue Table 7 Name"
+  Table8Name:
+    Type: String
+    Description: "Glue Table 8 Name"
+  Table9Name:
+    Type: String
+    Description: "Glue Table 9 Name"
+  Table10Name:
+    Type: String
+    Description: "Glue Table 10 Name"
+  Table11Name:
+    Type: String
+    Description: "Glue Table 11 Name"
+  Table12Name:
+    Type: String
+    Description: "Glue Table 12 Name"
+  Table13Name:
+    Type: String
+    Description: "Glue Table 13 Name"
+  Table14Name:
+    Type: String
+    Description: "Glue Table 14 Name"
+  Table15Name:
+    Type: String
+    Description: "Glue Table 15 Name"
+  Table16Name:
+    Type: String
+    Description: "Glue Table 16 Name"
+  Table17Name:
+    Type: String
+    Description: "Glue Table 17 Name"
+  Table18Name:
+    Type: String
+    Description: "Glue Table 18 Name"
+
+Resources:
+  GlueDatabase:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseInput:
+        Name: !Sub "${DatabaseName}"
+  GlueTable1:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref GlueDatabase
+      TableInput:  
+        Parameters:
+          classification: parquet
+        Name: !Sub "${Table1Name}"
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: string
+            Name: clnt_mfgr
+          - Type: string
+            Name: cmpgn_id
+          - Type: string
+            Name: cmpgn_nm
+          - Type: date
+            Name: cmpgn_start_dt
+          - Type: date
+            Name: cmpgn_end_dt
+          - Type: string
+            Name: crtve_nm
+          - Type: string
+            Name: crtve_id
+          - Type: string
+            Name: partnr_nm
+          - Type: string
+            Name: retlr_nm
+          - Type: string
+            Name: provdr_nm
+          - Type: string
+            Name: brand_nm
+          - Type: string
+            Name: subbrand_nm
+          - Type: string
+            Name: mkt_nm
+          - Type: string
+            Name: dma_nm
+          - Type: string
+            Name: tactc_nm
+          - Type: string
+            Name: prod_catg_nm
+          - Type: string
+            Name: prod_subcatg_nm
+          - Type: string
+            Name: trgt_audnce
+          - Type: string
+            Name: addl_trgt_audnce
+          - Type: string
+            Name: multi_brand_flg
+          - Type: string
+            Name: halo_brand_nm
+          - Type: string
+            Name: wk_nbr
+          - Type: string
+            Name: subtactc_nm
+          - Type: string
+            Name: addl_subtactc_nm
+          - Type: string
+            Name: site_nm
+          - Type: string
+            Name: placemt_nm
+          - Type: string
+            Name: dur_val
+          - Type: string
+            Name: devc_type_nm
+          - Type: string
+            Name: dim_val
+          - Type: date
+            Name: wk_end_dt
+          - Type: bigint
+            Name: complt_view_cnt
+          - Type: double
+            Name: spend_amt
+          - Type: bigint
+            Name: imprsn_cnt
+          - Type: bigint
+            Name: click_cnt
+          - Type: bigint
+            Name: alloc_complt_view_cnt
+          - Type: double
+            Name: alloc_spend_amt
+          - Type: bigint
+            Name: alloc_imprsn_cnt
+          - Type: bigint
+            Name: alloc_click_cnt
+          - Type: string
+            Name: src_brand_nm
+          - Type: string
+            Name: colct_yr
+          - Type: string
+            Name: colct_half
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/display/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: date
+            Name: wk_start_dt
+        TableType: EXTERNAL_TABLE
+  GlueTable2:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId 
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Parameters:
+          classification: parquet
+        Name: !Sub "${Table2Name}"
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: string
+            Name: clnt_mfgr
+          - Type: string
+            Name: cmpgn_id
+          - Type: string
+            Name: cmpgn_nm
+          - Type: date
+            Name: cmpgn_start_dt
+          - Type: date
+            Name: cmpgn_end_dt
+          - Type: string
+            Name: crtve_id
+          - Type: string
+            Name: crtve_nm
+          - Type: string
+            Name: partnr_nm
+          - Type: string
+            Name: retlr_nm
+          - Type: string
+            Name: provdr_nm
+          - Type: string
+            Name: mkt_nm
+          - Type: string
+            Name: dma_nm
+          - Type: string
+            Name: brand_nm
+          - Type: string
+            Name: subbrand_nm
+          - Type: string
+            Name: prod_catg_nm
+          - Type: string
+            Name: prod_subcatg_nm
+          - Type: string
+            Name: trgt_audnce
+          - Type: string
+            Name: addl_trgt_audnce
+          - Type: string
+            Name: multi_brand_flg
+          - Type: string
+            Name: halo_brand_nm
+          - Type: string
+            Name: wk_nbr
+          - Type: string
+            Name: tactc_nm
+          - Type: string
+            Name: subtactc_nm
+          - Type: string
+            Name: site_nm
+          - Type: string
+            Name: devc_type_nm
+          - Type: date
+            Name: wk_end_dt
+          - Type: string
+            Name: pltfrm_nm
+          - Type: bigint
+            Name: imprsn_cnt
+          - Type: bigint
+            Name: click_cnt
+          - Type: double
+            Name: spend_amt
+          - Type: double
+            Name: prod_gsv
+          - Type: bigint
+            Name: alloc_imprsn_cnt  
+          - Type: bigint
+            Name: alloc_click_cnt
+          - Type: double
+            Name: alloc_spend_amt
+          - Type: double
+            Name: alloc_prod_gsv 
+          - Type: string
+            Name: src_brand_nm
+          - Type: string
+            Name: colct_yr
+          - Type: string
+            Name: colct_half  
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/search/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: date
+            Name: wk_start_dt
+        TableType: EXTERNAL_TABLE
+  GlueTable3:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Parameters:
+          classification: parquet
+        Name: !Sub "${Table3Name}" 
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: string
+            Name: clnt_mfgr
+          - Type: string
+            Name: cmpgn_id
+          - Type: string
+            Name: cmpgn_nm
+          - Type: date
+            Name: cmpgn_start_dt
+          - Type: date
+            Name: cmpgn_end_dt
+          - Type: string
+            Name: crtve_id
+          - Type: string
+            Name: crtve_nm
+          - Type: string
+            Name: partnr_nm
+          - Type: string
+            Name: retlr_nm
+          - Type: string
+            Name: provdr_nm
+          - Type: string
+            Name: brand_nm
+          - Type: string
+            Name: subbrand_nm
+          - Type: string
+            Name: mkt_nm
+          - Type: string
+            Name: dma_nm
+          - Type: string
+            Name: tactc_nm
+          - Type: string
+            Name: prod_catg_nm
+          - Type: string
+            Name: prod_subcatg_nm
+          - Type: string
+            Name: trgt_audnce
+          - Type: string
+            Name: addl_trgt_audnce
+          - Type: string
+            Name: multi_brand_flg
+          - Type: string
+            Name: halo_brand_nm
+          - Type: string
+            Name: wk_nbr
+          - Type: string
+            Name: subtactc_nm
+          - Type: string
+            Name: addl_subtactc_nm
+          - Type: string
+            Name: site_nm
+          - Type: string
+            Name: pltfrm_nm
+          - Type: string
+            Name: dur_va
+          - Type: string
+            Name: devc_type_nm
+          - Type: date
+            Name: wk_end_dt
+          - Type: bigint
+            Name: imprsn_cnt
+          - Type: bigint
+            Name: view_cnt
+          - Type: double
+            Name: spend_amt
+          - Type: bigint
+            Name: alloc_imprsn_cnt
+          - Type: bigint
+            Name: alloc_view_cnt
+          - Type: string
+            Name: src_brand_nm
+          - Type: string
+            Name: colct_yr
+          - Type: string
+            Name: colct_half
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/olv/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: date
+            Name: wk_start_dt
+        TableType: EXTERNAL_TABLE
+  GlueTable4:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Parameters:
+          classification: parquet
+        Name: !Sub "${Table4Name}"
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: string
+            Name: clnt_mfgr
+          - Type: string
+            Name: cmpgn_id
+          - Type: string
+            Name: cmpgn_nm
+          - Type: date
+            Name: cmpgn_start_dt
+          - Type: date
+            Name: cmpgn_end_dt
+          - Type: string
+            Name: crtve_nm
+          - Type: string
+            Name: crtve_id
+          - Type: string
+            Name: partnr_nm
+          - Type: string
+            Name: retlr_nm
+          - Type: string
+            Name: provdr_nm
+          - Type: string
+            Name: brand_nm
+          - Type: string
+            Name: subbrand_nm
+          - Type: string
+            Name: mkt_nm
+          - Type: string
+            Name: dma_nm
+          - Type: string
+            Name: prod_catg_nm
+          - Type: string
+            Name: prod_subcatg_nm
+          - Type: string
+            Name: trgt_audnce
+          - Type: string
+            Name: addl_trgt_audnce
+          - Type: string
+            Name: multi_brand_flg
+          - Type: string
+            Name: halo_brand_nm
+          - Type: string
+            Name: wk_nbr
+          - Type: string
+            Name: tactc_nm
+          - Type: string
+            Name: subtactc_nm
+          - Type: string
+            Name: addl_subtactc_nm
+          - Type: string
+            Name: site_nm
+          - Type: string
+            Name: placemt_nm
+          - Type: string
+            Name: devc_type_nm
+          - Type: date
+            Name: wk_end_dt
+          - Type: bigint
+            Name: imprsn_cnt
+          - Type: bigint
+            Name: like_cnt
+          - Type: bigint
+            Name: share_cnt
+          - Type: bigint
+            Name: click_cnt
+          - Type: double
+            Name: spend_amt  
+          - Type: bigint
+            Name: alloc_imprsn_cnt
+          - Type: bigint
+            Name: alloc_like_cnt 
+          - Type: bigint
+            Name: alloc_share_cnt
+          - Type: bigint
+            Name: alloc_click_cnt
+          - Type: double
+            Name: alloc_spend_amt
+          - Type: string
+            Name: src_brand_nm
+          - Type: string
+            Name: colct_yr
+          - Type: string
+            Name: colct_half
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/social/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: date
+            Name: wk_start_dt
+        TableType: EXTERNAL_TABLE
+  GlueTable5:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Parameters:
+          classification: parquet
+        Name: !Sub "${Table5Name}"
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: string
+            Name: clnt_mfgr
+          - Type: string
+            Name: cmpgn_id
+          - Type: string
+            Name: cmpgn_nm
+          - Type: date
+            Name: cmpgn_start_dt
+          - Type: date
+            Name: cmpgn_end_dt
+          - Type: string
+            Name: crtve_nm
+          - Type: string
+            Name: crtve_id
+          - Type: string
+            Name: provdr_nm
+          - Type: string
+            Name: retlr_nm
+          - Type: string
+            Name: partnr_nm           
+          - Type: string
+            Name: brand_nm
+          - Type: string
+            Name: subbrand_nm
+          - Type: string
+            Name: prod_catg_nm
+          - Type: string
+            Name: prod_subcatg_nm
+          - Type: string
+            Name: tactc_nm
+          - Type: string
+            Name: subtactc_nm
+          - Type: string
+            Name: trgt_audnce
+          - Type: string
+            Name: addl_trgt_audnce
+          - Type: string
+            Name: multi_brand_flg
+          - Type: string
+            Name: halo_brand_nm
+          - Type: string
+            Name: wk_nbr
+          - Type: string
+            Name: offer_id
+          - Type: string
+            Name: offer_desc
+          - Type: double
+            Name: face_val
+          - Type: string
+            Name: min_pur_desc
+          - Type: date
+            Name: insrt_dt
+          - Type: date
+            Name: expir_dt
+          - Type: bigint
+            Name: downld_cnt
+          - Type: bigint
+            Name: actvn_cnt
+          - Type: double
+            Name: distbn_amt
+          - Type: double
+            Name: actvn_amt
+          - Type: double
+            Name: total_amt
+          - Type: string
+            Name: dma_nm
+          - Type: bigint
+            Name: alloc_downld_cnt
+          - Type: bigint
+            Name: alloc_actvn_cnt
+          - Type: double
+            Name: alloc_distbn_amt
+          - Type: double
+            Name: alloc_actvn_amt
+          - Type: double
+            Name: alloc_total_amt
+          - Type: string
+            Name: src_brand_nm
+          - Type: string
+            Name: colct_yr
+          - Type: string
+            Name: colct_half
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/digital_coupons/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: date
+            Name: wk_start_dt
+        TableType: EXTERNAL_TABLE        
+
+  GlueTable6:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Parameters:
+          classification: parquet  
+        Name: !Sub "${Table6Name}"
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: string
+            Name: clnt_mfgr
+          - Type: string
+            Name: cmpgn_id
+          - Type: string
+            Name: cmpgn_nm
+          - Type: date
+            Name: cmpgn_start_dt
+          - Type: date
+            Name: cmpgn_end_dt
+          - Type: string
+            Name: crtve_id
+          - Type: string
+            Name: crtve_nm
+          - Type: string
+            Name: partnr_nm
+          - Type: string
+            Name: retlr_nm
+          - Type: string
+            Name: provdr_nm           
+          - Type: string
+            Name: brand_nm
+          - Type: string
+            Name: subbrand_nm
+          - Type: string
+            Name: prod_catg_nm
+          - Type: string
+            Name: prod_subcatg_nm
+          - Type: string
+            Name: dma_nm
+          - Type: string
+            Name: mkt_nm
+          - Type: string
+            Name: tactc_nm
+          - Type: string
+            Name: trgt_audnce
+          - Type: string
+            Name: addl_trgt_audnce  
+          - Type: string
+            Name: multi_brand_flg
+          - Type: string
+            Name: halo_brand_nm
+          - Type: string
+            Name: wk_nbr
+          - Type: string
+            Name: subtactc_nm  
+          - Type: date
+            Name: instl_dt   
+          - Type: date
+            Name: takedwn_dt
+          - Type: string
+            Name: loc_nm
+          - Type: bigint
+            Name: imprsn_cnt
+          - Type: double
+            Name: spend_amt
+          - Type: bigint
+            Name: alloc_imprsn_cnt
+          - Type: double
+            Name: alloc_spend_amt
+          - Type: string
+            Name: src_brand_nm
+          - Type: string
+            Name: colct_yr
+          - Type: string
+            Name: colct_half
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/ooh/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: date
+            Name: wk_start_dt
+        TableType: EXTERNAL_TABLE 
+
+
+  GlueTable7:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Parameters:
+          classification: parquet
+        Name: !Sub "${Table7Name}"
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: string
+            Name: event_nm
+          - Type: string
+            Name: qtr_nbr
+          - Type: date
+            Name: start_dt
+          - Type: date
+            Name: end_dt
+          - Type: bigint
+            Name: item_nbr
+          - Type: string
+            Name: cmb_nm
+          - Type: string
+            Name: brand_nm
+          - Type: string
+            Name: prod_catg_nm
+          - Type: bigint
+            Name: n_ctn_ship
+          - Type: double
+            Name: p_ctn_ship           
+          - Type: double
+            Name: total_amt
+          - Type: double
+            Name: food_amt
+          - Type: double
+            Name: drug_amt
+          - Type: double
+            Name: dol_amt
+          - Type: double
+            Name: club_amt
+          - Type: double
+            Name: mass_amt
+          - Type: double
+            Name: walmt_amt
+          - Type: double
+            Name: convce_amt
+          - Type: double
+            Name: ao_amt
+          - Type: bigint
+            Name: alloc_n_ctn_ship
+          - Type: double
+            Name: alloc_p_ctn_ship
+          - Type: double
+            Name: alloc_total_amt
+          - Type: double
+            Name: alloc_food_amt
+          - Type: double
+            Name: alloc_drug_amt
+          - Type: double
+            Name: alloc_dol_amt
+          - Type: double
+            Name: alloc_club_amt
+          - Type: double
+            Name: alloc_mass_amt
+          - Type: double
+            Name: alloc_walmt_amt
+          - Type: double
+            Name: alloc_convce_amt
+          - Type: double
+            Name: alloc_ao_amt
+          - Type: string
+            Name: src_brand_nm
+          - Type: string
+            Name: colct_yr
+          - Type: string
+            Name: colct_half
+          - Type: string
+            Name: provdr_nm
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/tentpole/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: date
+            Name: wk_start_dt
+        TableType: EXTERNAL_TABLE   
+
+  GlueTable8:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Parameters:
+          classification: parquet
+        Name: !Sub "${Table8Name}"
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: string
+            Name: clnt_mfgr
+          - Type: string
+            Name: cmpgn_id
+          - Type: string
+            Name: cmpgn_nm
+          - Type: date
+            Name: cmpgn_start_dt
+          - Type: date
+            Name: cmpgn_end_dt
+          - Type: string
+            Name: crtve_id
+          - Type: string
+            Name: crtve_nm
+          - Type: string
+            Name: partnr_nm
+          - Type: string
+            Name: retlr_nm
+          - Type: string
+            Name: provdr_nm           
+          - Type: string
+            Name: brand_nm
+          - Type: string
+            Name: subbrand_nm
+          - Type: string
+            Name: prod_catg_nm
+          - Type: string
+            Name: prod_subcatg_nm
+          - Type: string
+            Name: dma_nm
+          - Type: string
+            Name: mkt_nm
+          - Type: string
+            Name: tactc_nm
+          - Type: string
+            Name: trgt_audnce
+          - Type: string
+            Name: addl_trgt_audnce
+          - Type: string
+            Name: multi_brand_flg
+          - Type: string
+            Name: halo_brand_nm
+          - Type: string
+            Name: wk_nbr
+          - Type: string
+            Name: site_nm
+          - Type: string
+            Name: subtactc_nm  
+          - Type: string
+            Name: addl_subtactc_nm
+          - Type: string
+            Name: dur_val
+          - Type: string
+            Name: pgm_type_name
+          - Type: date
+            Name: wk_end_dt
+          - Type: double
+            Name: trp_cnt
+          - Type: bigint
+            Name: imprsn_cnt
+          - Type: double
+            Name: spend_amt
+          - Type: double
+            Name: alloc_trp_cnt
+          - Type: bigint
+            Name: alloc_imprsn_cnt
+          - Type: double
+            Name: alloc_spend_amt
+          - Type: string
+            Name: src_brand_nm
+          - Type: string
+            Name: colct_yr
+          - Type: string
+            Name: colct_half
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/audio/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: date
+            Name: wk_start_dt
+        TableType: EXTERNAL_TABLE   
+
+  GlueTable9:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Parameters:
+          classification: parquet
+        Name: !Sub "${Table9Name}"
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: string
+            Name: clnt_mfgr
+          - Type: string
+            Name: cmpgn_id
+          - Type: string
+            Name: cmpgn_nm
+          - Type: date
+            Name: cmpgn_start_dt
+          - Type: date
+            Name: cmpgn_end_dt
+          - Type: string
+            Name: crtve_id
+          - Type: string
+            Name: crtve_nm
+          - Type: string
+            Name: provdr_nm
+          - Type: string
+            Name: retlr_nm
+          - Type: string
+            Name: partnr_nm           
+          - Type: string
+            Name: brand_nm
+          - Type: string
+            Name: subbrand_nm
+          - Type: string
+            Name: prod_catg_nm
+          - Type: string
+            Name: prod_subcatg_nm
+          - Type: string
+            Name: dma_nm
+          - Type: string
+            Name: mkt_nm
+          - Type: string
+            Name: tactc_nm
+          - Type: string
+            Name: trgt_audnce
+          - Type: string
+            Name: addl_trgt_audnce
+          - Type: string
+            Name: multi_brand_flg
+          - Type: string
+            Name: halo_brand_nm
+          - Type: string
+            Name: wk_nbr
+          - Type: date
+            Name: wk_end_dt
+          - Type: string
+            Name: subtactc_nm
+          - Type: string
+            Name: addl_subtactc_nm
+          - Type: string
+            Name: publctn
+          - Type: string
+            Name: publctn_type
+          - Type: bigint
+            Name: imprsn_cnt
+          - Type: bigint
+            Name: circlt_cnt
+          - Type: double
+            Name: spend_amt
+          - Type: bigint
+            Name: alloc_imprsn_cnt
+          - Type: bigint
+            Name: alloc_circlt_cnt
+          - Type: double
+            Name: alloc_spend_amt
+          - Type: string
+            Name: src_brand_nm
+          - Type: string
+            Name: colct_yr
+          - Type: string
+            Name: colct_half
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/pr/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: date
+            Name: wk_start_dt
+        TableType: EXTERNAL_TABLE         
+
+  GlueTable10:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Parameters:
+          classification: parquet
+        Name: !Sub "${Table10Name}"
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: string
+            Name: time_pd
+          - Type: string
+            Name: a_mgmt_sales
+          - Type: string
+            Name: b_mgmt_sales
+          - Type: string
+            Name: c_mgmt_sales
+          - Type: string
+            Name: d_mgmt_sales
+          - Type: string
+            Name: e_mgmt_sales
+          - Type: bigint
+            Name: plan_to
+          - Type: string
+            Name: retlr_nm
+          - Type: string
+            Name: mp_brand_nm
+          - Type: double
+            Name: di_dol_gsv           
+          - Type: double
+            Name: di_lb_gsv
+          - Type: string
+            Name: chnl_nm
+          - Type: string
+            Name: brand_nm
+          - Type: string
+            Name: prod_catg_nm
+          - Type: double
+            Name: alloc_di_dol_gsv
+          - Type: double
+            Name: alloc_di_lb_gsv
+          - Type: string
+            Name: src_brand_nm
+          - Type: string
+            Name: colct_yr
+          - Type: string
+            Name: colct_half
+          - Type: string
+            Name: provdr_nm  
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/shipment/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: date
+            Name: wk_start_dt
+        TableType: EXTERNAL_TABLE    
+
+  GlueTable11:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Parameters:
+          classification: parquet
+        Name: !Sub "${Table11Name}"
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: string
+            Name: clnt_mfgr
+          - Type: string
+            Name: cmpgn_id
+          - Type: string
+            Name: cmpgn_nm
+          - Type: string
+            Name: crtve_id
+          - Type: string
+            Name: crtve_nm
+          - Type: string
+            Name: partnr_nm
+          - Type: string
+            Name: provdr_nm
+          - Type: string
+            Name: brand_nm
+          - Type: string
+            Name: subbrand_nm
+          - Type: string
+            Name: dma_nm           
+          - Type: string
+            Name: tactc_nm
+          - Type: string
+            Name: prod_catg_nm
+          - Type: string
+            Name: prod_subcatg_nm
+          - Type: string
+            Name: trgt_audnce
+          - Type: string
+            Name: addl_trgt_audnce
+          - Type: string
+            Name: mkt_nm
+          - Type: string
+            Name: multi_brand_flg
+          - Type: string
+            Name: halo_brand_nm
+          - Type: string
+            Name: subtactc_nm
+          - Type: date
+            Name: cmpgn_start_dt
+          - Type: date
+            Name: cmpgn_end_dt
+          - Type: string
+            Name: site_nm
+          - Type: string
+            Name: pltfrm_nm
+          - Type: string
+            Name: devc_type_nm
+          - Type: date
+            Name: wk_end_dt
+          - Type: string
+            Name: wk_nbr
+          - Type: bigint
+            Name: imprsn_cnt
+          - Type: bigint
+            Name: alloc_imprsn_cnt
+          - Type: string
+            Name: src_brand_nm
+          - Type: string
+            Name: colct_yr
+          - Type: string
+            Name: colct_half
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/email/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: string
+            Name: wk_start_dt
+        TableType: EXTERNAL_TABLE                
+
+  GlueTable12:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Parameters:
+          classification: parquet
+        Name: !Sub "${Table12Name}"
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: string
+            Name: coupon_nbr
+          - Type: string
+            Name: offer_code
+          - Type: string
+            Name: accntng_nbr
+          - Type: string
+            Name: offer_desc
+          - Type: date
+            Name: issue_dt
+          - Type: date
+            Name: exp_dt
+          - Type: string
+            Name: divsn
+          - Type: string
+            Name: ff1_ion_fee
+          - Type: string
+            Name: gl_code
+          - Type: string
+            Name: cnfrm_brand_incld           
+          - Type: double
+            Name: totl_redption_cost
+          - Type: double
+            Name: total_vap_cost
+          - Type: string
+            Name: brand_nm
+          - Type: string
+            Name: alcatd_prcnt
+          - Type: double
+            Name: alcatd_redption_cost
+          - Type: double
+            Name: alcatd_vap_cost
+          - Type: string
+            Name: wk_nbr
+          - Type: double
+            Name: alloc_alcatd_redption_cost
+          - Type: double
+            Name: alloc_alcatd_vap_cost
+          - Type: string
+            Name: src_brand_nm
+          - Type: string
+            Name: colct_yr
+          - Type: string
+            Name: colct_half
+          - Type: string
+            Name: provdr_nm
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/fsi_restatement/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: date
+            Name: wk_start_dt
+        TableType: EXTERNAL_TABLE       
+
+  GlueTable13:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref GlueDatabase
+      TableInput:  
+        Parameters:
+          classification: parquet
+        Name: !Sub "${Table13Name}"
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: double
+            Name: total_edlp_amt
+          - Type: double
+            Name: total_hilo_amt
+          - Type: string
+            Name: chnl_nm
+          - Type: string
+            Name: retlr_nm
+          - Type: string
+            Name: ppg_brand_nm           
+          - Type: string
+            Name: ppg_nm
+          - Type: string
+            Name: plan_to
+          - Type: string
+            Name: brand_nm
+          - Type: string
+            Name: prmtn_type
+          - Type: string
+            Name: type_nm
+          - Type: string
+            Name: wk_nbr
+          - Type: double
+            Name: alloc_total_edlp_amt
+          - Type: double
+            Name: alloc_total_hilo_amt
+          - Type: string
+            Name: src_brand_nm
+          - Type: string
+            Name: colct_yr
+          - Type: string
+            Name: colct_half
+          - Type: string
+            Name: provdr_nm  
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/trade/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: date
+            Name: wk_start_dt
+        TableType: EXTERNAL_TABLE       
+
+  GlueTable14:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref GlueDatabase
+      TableInput:  
+        Parameters:
+          classification: parquet
+        Name: !Sub "${Table14Name}"
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: string
+            Name: clnt_mfgr
+          - Type: string
+            Name: cmpgn_id
+          - Type: string
+            Name: cmpgn_nm
+          - Type: date
+            Name: cmpgn_start_dt
+          - Type: date
+            Name: cmpgn_end_dt
+          - Type: string
+            Name: crtve_nm
+          - Type: string
+            Name: crtve_id
+          - Type: string
+            Name: partnr_nm
+          - Type: string
+            Name: retlr_nm
+          - Type: string
+            Name: provdr_nm           
+          - Type: string
+            Name: brand_nm
+          - Type: string
+            Name: subbrand_nm
+          - Type: string
+            Name: prod_catg_nm
+          - Type: string
+            Name: prod_subcatg_nm
+          - Type: string
+            Name: tactc_nm
+          - Type: string
+            Name: mkt_nm
+          - Type: string
+            Name: dma_nm
+          - Type: string
+            Name: subtactc_nm
+          - Type: double
+            Name: face_val
+          - Type: string
+            Name: min_pur_desc
+          - Type: date
+            Name: insrt_dt
+          - Type: date
+            Name: expir_dt
+          - Type: string
+            Name: insrt_size_val
+          - Type: string
+            Name: cpn_desc
+          - Type: string
+            Name: cpn_id
+          - Type: bigint
+            Name: circlt_cnt
+          - Type: bigint
+            Name: redm_cnt
+          - Type: string
+            Name: multi_brand_flg
+          - Type: string
+            Name: halo_brand_nm
+          - Type: string
+            Name: wk_nbr
+          - Type: bigint
+            Name: alloc_circlt_cnt
+          - Type: bigint
+            Name: alloc_redm_cnt
+          - Type: string
+            Name: src_brand_nm
+          - Type: string
+            Name: colct_yr
+          - Type: string
+            Name: colct_half
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/fsi/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: date
+            Name: wk_start_dt
+        TableType: EXTERNAL_TABLE     
+
+
+  GlueTable15:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref GlueDatabase
+      TableInput:  
+        Parameters:
+          classification: parquet
+        Name: !Sub "${Table15Name}" 
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: string
+            Name: clnt_mfgr
+          - Type: string
+            Name: cmpgn_id
+          - Type: string
+            Name: cmpgn_nm
+          - Type: date
+            Name: cmpgn_start_dt
+          - Type: date
+            Name: cmpgn_end_dt
+          - Type: string
+            Name: crtve_id
+          - Type: string
+            Name: crtve_nm
+          - Type: string
+            Name: provdr_nm
+          - Type: string
+            Name: retlr_nm
+          - Type: string
+            Name: partnr_nm           
+          - Type: string
+            Name: brand_nm
+          - Type: string
+            Name: subbrand_nm
+          - Type: string
+            Name: prod_catg_nm
+          - Type: string
+            Name: prod_subcatg_nm
+          - Type: string
+            Name: mkt_nm
+          - Type: string
+            Name: dma_nm
+          - Type: string
+            Name: addr_nm
+          - Type: string
+            Name: multi_brand_flg
+          - Type: string
+            Name: halo_brand_nm
+          - Type: string
+            Name: wk_nbr
+          - Type: string
+            Name: tactc_nm
+          - Type: string
+            Name: evnt_type
+          - Type: string
+            Name: str_nbr
+          - Type: string
+            Name: str_nm
+          - Type: string
+            Name: trgt_audnce
+          - Type: string
+            Name: placemt_nm
+          - Type: string
+            Name: subtactc_nm
+          - Type: string
+            Name: addl_subtactc_nm
+          - Type: date
+            Name: wk_end_dt
+          - Type: bigint
+            Name: imprsn_cnt
+          - Type: bigint
+            Name: circlt_cnt
+          - Type: bigint
+            Name: cpn_distbn_cnt
+          - Type: bigint
+            Name: cpn_redm_cnt
+          - Type: double
+            Name: distbn_amt
+          - Type: double
+            Name: redm_amt
+          - Type: double
+            Name: total_amt
+          - Type: bigint
+            Name: alloc_imprsn_cnt
+          - Type: bigint
+            Name: alloc_circlt_cnt
+          - Type: bigint
+            Name: alloc_cpn_distbn_cnt
+          - Type: bigint
+            Name: alloc_cpn_redm_cnt
+          - Type: double
+            Name: alloc_distbn_amt
+          - Type: double
+            Name: alloc_redm_amt
+          - Type: double
+            Name: alloc_total_amt
+          - Type: string
+            Name: src_brand_nm
+          - Type: string
+            Name: colct_yr
+          - Type: string
+            Name: colct_half
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/shopper_instore/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: date
+            Name: wk_start_dt
+        TableType: EXTERNAL_TABLE         
+  
+  GlueTable16:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Parameters:
+          classification: parquet
+        Name: !Sub "${Table16Name}"
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: string
+            Name: clnt_mfgr
+          - Type: string
+            Name: cmpgn_id
+          - Type: string
+            Name: cmpgn_nm
+          - Type: date
+            Name: cmpgn_start_dt
+          - Type: date
+            Name: cmpgn_end_dt
+          - Type: string
+            Name: crtve_nm
+          - Type: string
+            Name: crtve_id
+          - Type: string
+            Name: partnr_nm
+          - Type: string
+            Name: retlr_nm
+          - Type: string
+            Name: provdr_nm
+          - Type: string
+            Name: brand_nm           
+          - Type: string
+            Name: subbrand_nm
+          - Type: string
+            Name: mkt_nm
+          - Type: string
+            Name: dma_nm
+          - Type: string
+            Name: tactc_nm
+          - Type: string
+            Name: prod_catg_nm
+          - Type: string
+            Name: prod_subcatg_nm
+          - Type: string
+            Name: trgt_audnce
+          - Type: string
+            Name: addl_trgt_audnce
+          - Type: string
+            Name: multi_brand_flg
+          - Type: string
+            Name: halo_brand_nm
+          - Type: string
+            Name: wk_nbr
+          - Type: string
+            Name: subtactc_nm
+          - Type: string
+            Name: addl_subtactc_nm
+          - Type: string
+            Name: site_nm
+          - Type: string
+            Name: placemt_nm
+          - Type: string
+            Name: dur_val
+          - Type: string
+            Name: devc_type_nm
+          - Type: string
+            Name: dim_val
+          - Type: date
+            Name: wk_start_dt
+          - Type: date
+            Name: wk_end_dt
+          - Type: bigint
+            Name: complt_view_cnt
+          - Type: double
+            Name: spend_amt
+          - Type: bigint
+            Name: imprsn_cnt
+          - Type: bigint
+            Name: click_cnt 
+          - Type: bigint
+            Name: alloc_complt_view_cnt
+          - Type: double
+            Name: alloc_spend_amt
+          - Type: bigint
+            Name: alloc_imprsn_cnt   
+          - Type: bigint
+            Name: alloc_click_cnt 
+          - Type: string
+            Name: src_brand_nm     
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/dcm/display/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: date
+            Name: dt
+        TableType: EXTERNAL_TABLE       
+        
+  GlueTable17:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Parameters:
+          classification: parquet
+        Name: !Sub "${Table17Name}"
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: string
+            Name: clnt_mfgr
+          - Type: string
+            Name: cmpgn_id
+          - Type: string
+            Name: cmpgn_nm  
+          - Type: date
+            Name: cmpgn_start_dt
+          - Type: date
+            Name: cmpgn_end_dt
+          - Type: string
+            Name: crtve_id
+          - Type: string
+            Name: crtve_nm
+          - Type: string
+            Name: partnr_nm
+          - Type: string
+            Name: retlr_nm
+          - Type: string
+            Name: provdr_nm
+          - Type: string
+            Name: brand_nm           
+          - Type: string
+            Name: subbrand_nm
+          - Type: string
+            Name: mkt_nm
+          - Type: string
+            Name: dma_nm
+          - Type: string
+            Name: tactc_nm
+          - Type: string
+            Name: prod_catg_nm
+          - Type: string
+            Name: prod_subcatg_nm
+          - Type: string
+            Name: trgt_audnce
+          - Type: string
+            Name: addl_trgt_audnce
+          - Type: string
+            Name: multi_brand_flg
+          - Type: string
+            Name: halo_brand_nm
+          - Type: string
+            Name: wk_nbr
+          - Type: string
+            Name: subtactc_nm
+          - Type: string
+            Name: addl_subtactc_nm
+          - Type: string
+            Name: site_nm
+          - Type: string
+            Name: pltfrm_nm
+          - Type: string
+            Name: dur_va
+          - Type: string
+            Name: devc_type_nm
+          - Type: date
+            Name: wk_start_dt
+          - Type: date
+            Name: wk_end_dt
+          - Type: bigint
+            Name: imprsn_cnt
+          - Type: bigint
+            Name: view_cnt 
+          - Type: double
+            Name: spend_amt
+          - Type: bigint
+            Name: alloc_imprsn_cnt
+          - Type: bigint
+            Name: alloc_view_cnt   
+          - Type: string
+            Name: src_brand_nm     
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/dcm/olv/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: date
+            Name: dt
+        TableType: EXTERNAL_TABLE 
+        
+  GlueTable18:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref GlueDatabase
+      TableInput:
+        Parameters:
+          classification: parquet
+        Name: !Sub "${Table18Name}"
+        Owner: owner
+        Retention: 0
+        StorageDescriptor:
+          Columns:
+          - Type: string
+            Name: clnt_mfgr
+          - Type: string
+            Name: cmpgn_id
+          - Type: string
+            Name: cmpgn_nm  
+          - Type: date
+            Name: cmpgn_start_dt
+          - Type: date
+            Name: cmpgn_end_dt
+          - Type: string
+            Name: crtve_nm
+          - Type: string
+            Name: crtve_id
+          - Type: string
+            Name: partnr_nm
+          - Type: string
+            Name: retlr_nm
+          - Type: string
+            Name: provdr_nm
+          - Type: string
+            Name: brand_nm           
+          - Type: string
+            Name: subbrand_nm
+          - Type: string
+            Name: mkt_nm
+          - Type: string
+            Name: dma_nm
+          - Type: string
+            Name: prod_catg_nm
+          - Type: string
+            Name: prod_subcatg_nm
+          - Type: string
+            Name: trgt_audnce
+          - Type: string
+            Name: addl_trgt_audnce
+          - Type: string
+            Name: multi_brand_flg
+          - Type: string
+            Name: halo_brand_nm
+          - Type: string
+            Name: wk_nbr
+          - Type: string
+            Name: tactc_nm
+          - Type: string
+            Name: subtactc_nm
+          - Type: string
+            Name: addl_subtactc_nm
+          - Type: string
+            Name: site_nm
+          - Type: string
+            Name: placemt_nm
+          - Type: string
+            Name: devc_type_nm
+          - Type: date
+            Name: wk_start_dt
+          - Type: date
+            Name: wk_end_dt
+          - Type: bigint
+            Name: imprsn_cnt
+          - Type: bigint
+            Name: like_cnt 
+          - Type: bigint
+            Name: share_cnt
+          - Type: bigint
+            Name: click_cnt
+          - Type: double
+            Name: spend_amt   
+          - Type: bigint
+            Name: alloc_imprsn_cnt 
+          - Type: bigint
+            Name: alloc_like_cnt   
+          - Type: bigint
+            Name: alloc_share_cnt
+          - Type: bigint
+            Name: alloc_click_cnt
+          - Type: double
+            Name: alloc_spend_amt
+          - Type: string
+            Name: src_brand_nm        
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+            Parameters:
+              serialization.format: '1'
+          Location: !Sub "s3://${BucketName}/proc/data/kna_ext_mktg_exec/proc/dcm/social/"
+          BucketColumns: []
+          SortColumns: []
+          StoredAsSubDirectories: false
+        PartitionKeys:
+          - Type: string
+            Name: agncy_nm
+          - Type: string
+            Name: yr_nbr
+          - Type: date
+            Name: dt
+        TableType: EXTERNAL_TABLE
